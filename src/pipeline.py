@@ -17,8 +17,8 @@ class ETLPipeline:
             data_staging = pd.concat(result, ignore_index=True)
             output_extractor = OutputExtractor(folder_path='../staging', file_name='staging_data.csv')
             output_extractor.save(data_staging)
-            # self.transformer.transform(result)
-            # self.loader.load(result)
+            final_result = self.transformer.transform()
+            self.loader.load(final_result)
             print('Run Pipeline')
         except: 
             print('Error pipeline')
