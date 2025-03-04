@@ -34,4 +34,15 @@ if __name__ == "__main__":
 
     root_logger.addHandler(file_handler)
     
-    main()
+    # User input to start ETL
+    while True:
+        user_input = input("Start the ETL process(y/n): ").strip().lower()
+        
+        if user_input == "y":
+            main()
+            break
+        elif user_input == "n":
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid input. Please type 'y' to start the ETL process or 'n' to quit.")
