@@ -45,6 +45,7 @@ class Transformer:
             logging.info("Transforming data: Normalizing column names to Snake Case...")
             data.columns = data.columns.str.replace(r'(?<=[a-z0-9])([A-Z])', r'_\1', regex=True).str.replace(r'(?<!^)(?=[A-Z][a-z])', '_', regex=True).str.lower()
             logging.info("Transforming data: Normalizing column names to Snake Case completed.")
+            data = data.sort_values(by="lpep_pickup_datetime", ascending=True)
             return data
         except Exception as e: 
             logging.error(f"Error Transforming data in Normalizing column names to Snake Case: {e}", exc_info=True)
